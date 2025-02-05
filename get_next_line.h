@@ -6,15 +6,15 @@
 /*   By: alejagom <alejagom@student.42madird.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:19:28 by gafreire          #+#    #+#             */
-/*   Updated: 2025/02/05 18:01:06 by alejagom         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:40:22 by alejagom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 10
 # endif
 
 # include <stdlib.h>
