@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alejagom <alejagom@student.42madird.fr>    +#+  +:+       +#+        */
+/*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:52:08 by gafreire          #+#    #+#             */
-/*   Updated: 2025/02/05 20:42:16 by alejagom         ###   ########.fr       */
+/*   Updated: 2025/02/05 22:42:46 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@ char	*read_newline(int fd, char *line_buffer, char *buffer)
 	size = 1;
 	while (!ft_strchr(line_buffer, '\n') && size > 0)
 	{
-
 		size = read(fd, buffer, BUFFER_SIZE);
 		if (size < 0)
-			return (free (buffer), free (line_buffer), line_buffer = NULL);
+			return (free(buffer), free(line_buffer), line_buffer = NULL);
 		buffer[size] = '\0';
 		line_buffer = ft_strjoin(line_buffer, buffer);
 		if (!line_buffer)
-			return (free (buffer), NULL);
+			return (free(buffer), NULL);
 	}
-	free (buffer);
+	free(buffer);
 	return (line_buffer);
 }
 
@@ -60,7 +59,7 @@ char	*extract_line(char *line_buffer)
 	return (line);
 }
 
-char	*extract_remaining(char	*line_buffer)
+char	*extract_remaining(char *line_buffer)
 {
 	int		len;
 	int		i;
@@ -105,32 +104,32 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = extract_line(line_buffer);
 	if (!line)
-		return (free (line_buffer), line_buffer = NULL);
+		return (free(line_buffer), line_buffer = NULL);
 	line_buffer = extract_remaining(line_buffer);
 	if (!line_buffer)
-		return (free (line), NULL);
+		return (free(line), NULL);
 	if (*line_buffer == '\0')
 		return (free(line_buffer), line_buffer = NULL, line);
-	return line;
+	return (line);
 }
 
-int main(void)
-{
-	int	fd;
-	char	*line;
-	
-	fd = open("prueba.txt", O_RDONLY);
-	// line = get_next_line(fd);
-	if (fd < 0)
-	{
-		perror("error");
-		return 1;
-	}
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}		
-	close(fd);
-	return 0;
-}
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*line;
+
+// 	fd = open("prueba.txt", O_RDONLY);
+// 	// line = get_next_line(fd);
+// 	if (fd < 0)
+// 	{
+// 		perror("error");
+// 		return (1);
+// 	}
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	close(fd);
+// 	return (0);
+// }
