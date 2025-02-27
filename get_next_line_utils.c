@@ -3,16 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alejagom <alejagom@student.42madird.fr>    +#+  +:+       +#+        */
+/*   By: alejogogi <alejogogi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:52:11 by gafreire          #+#    #+#             */
-/*   Updated: 2025/02/03 21:09:35 by alejagom         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:50:55 by alejogogi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 #include <unistd.h>
+
+char	*ft_strchr(char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (str[i] != '\0')
+	{
+		if (str[i] == (unsigned char)c)
+			return ((char *)&str[i]);
+		i++;
+	}
+	if ((unsigned char)c == '\0')
+		return ((char *)&str[i]);
+	return (NULL);
+}
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -47,24 +65,6 @@ size_t	ft_strlen(char *s)
 		i++;
 	}
 	return (i);
-}
-
-char	*ft_strchr(char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if ((unsigned char)c == '\0')
-		return ((char *)&s[i]);
-	return (NULL);
 }
 
 char	*ft_strdup(char *s1)
